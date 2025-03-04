@@ -13,7 +13,7 @@ import Buttons from "./pages/UiElements/Buttons";
 import LineChart from "./pages/Charts/LineChart";
 import BarChart from "./pages/Charts/BarChart";
 import Calendar from "./pages/Calendar";
-import BasicTables from "./pages/Tables/BasicTables";
+import UserStreamTable from "./pages/Tables/UserStreamTable";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
@@ -22,6 +22,7 @@ import Home from "./pages/Dashboard/Home";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { CustomNavigationClient } from "./utils/NacigationClient";
 import { AuthHome } from "./pages/Dashboard/AuthHome";
+import UserSessionTable from "./pages/Tables/UserSessionTable";
 
 interface AppProps {
   pca: PublicClientApplication;
@@ -48,7 +49,11 @@ export default function App({ pca }: AppProps) {
           <Route path="/form-elements" element={<FormElements />} />
 
           {/* Tables */}
-          <Route path="/basic-tables" element={<BasicTables />} />
+          <Route path="/stream-records" element={<UserStreamTable />} />
+          <Route
+            path="/session-records/:email"
+            element={<UserSessionTable />}
+          />
 
           {/* Ui Elements */}
           <Route path="/alerts" element={<Alerts />} />
