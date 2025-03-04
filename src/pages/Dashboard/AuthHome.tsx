@@ -117,7 +117,7 @@ const redirectUri: string = import.meta.env.VITE_AZURE_AD_CLIENT_ID!;
           {/* Centered Unicorns Facing Each Other */}
           <div className="unicorn-container">
             {/* Left Unicorn */}
-            <div className="image w-[500px] h-[500px] opacity-75">
+            {/* <div className="image w-[500px] h-[500px] opacity-75"> */}
               {/* <motion.img
                 src={image}
                 alt="Unicorn Right"
@@ -131,10 +131,10 @@ const redirectUri: string = import.meta.env.VITE_AZURE_AD_CLIENT_ID!;
                 transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 className="unicorn transition-transform duration-500 ease-out"
               /> */}
-            </div>
+            {/* </div> */}
   
             {/* Right Unicorn (Flipped) */}
-            <div className="image w-[500px] h-[500px] scale-x-[-1] opacity-75">
+            {/* <div className="image w-[500px] h-[500px] scale-x-[-1] opacity-75"> */}
               {/* <motion.img
                 src={image}
                 alt="Unicorn Right"
@@ -148,7 +148,7 @@ const redirectUri: string = import.meta.env.VITE_AZURE_AD_CLIENT_ID!;
                 transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 className="unicorn transition-transform duration-500 ease-out"
               /> */}
-            </div>
+            {/* </div> */}
           </div>
   
           {/* Login Card */}
