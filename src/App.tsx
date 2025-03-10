@@ -22,7 +22,9 @@ import Home from "./pages/Dashboard/Home";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { CustomNavigationClient } from "./utils/NacigationClient";
 import { AuthHome } from "./pages/Dashboard/AuthHome";
+import UserTable from "./pages/Tables/UserTable";
 import UserSessionTable from "./pages/Tables/UserSessionTable";
+import SessionRecords from "./pages/SessionRecords/SessionRecords";
 
 interface AppProps {
   pca: PublicClientApplication;
@@ -49,10 +51,15 @@ export default function App({ pca }: AppProps) {
           <Route path="/form-elements" element={<FormElements />} />
 
           {/* Tables */}
-          <Route path="/stream-records" element={<UserStreamTable />} />
+          <Route path="/stream-records" element={<UserTable />} />
+          <Route path="/stream-records/:email" element={<UserStreamTable />} />
           <Route
-            path="/session-records/:email"
+            path="/stream-records/:email/:recordID"
             element={<UserSessionTable />}
+          />
+          <Route
+            path="/stream-records/:email/:recordID/:sessionID"
+            element={<SessionRecords />}
           />
 
           {/* Ui Elements */}
