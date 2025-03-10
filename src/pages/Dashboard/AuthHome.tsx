@@ -1,78 +1,76 @@
 import {
-    AuthenticatedTemplate,
-    UnauthenticatedTemplate,
-    useMsal,
-  } from "@azure/msal-react";
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+  useMsal,
+} from "@azure/msal-react";
 //   import { motion } from "framer-motion";
-  import { Link as RouterLink } from "react-router-dom";
-  import Logo from "../assets/AppStream.svg";
-  import admin from "../assets/user-setting.png";
-  import { loginRequest } from "../../authConfig";
-  import adminList from "../../adminList";
-  import image from "../../assets/images/LST.png";
-  import { useState, useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import Logo from "../assets/AppStream.svg";
+import admin from "../assets/user-setting.png";
+import { loginRequest } from "../../authConfig";
+import adminList from "../../adminList";
+import image from "../../assets/images/LST.png";
+import { useState, useEffect } from "react";
 //   import { Spin } from "antd";
 
 const redirectUri: string = import.meta.env.VITE_AZURE_AD_CLIENT_ID!;
-  
-  export function AuthHome() {
-    const { instance, accounts } = useMsal();
-    const isAdmin = accounts[0] && adminList.includes(accounts[0]?.username);
-    const [loaded, setLoaded] = useState(false);
-    const [clicked, setClicked] = useState(false);
-  
-    // **Preload the Image Before Rendering**
-    useEffect(() => {
-      const img = new Image();
-      img.src = image;
-      img.onload = () => setLoaded(true);
-    }, []);
-  
-    const handleLogin = (loginType: string) => {
-      if (loginType === "popup") {
-        instance.loginPopup({
-          ...loginRequest,
-          redirectUri: redirectUri,
-        });
-      } else if (loginType === "redirect") {
-        instance.loginRedirect(loginRequest);
-      }
-    };
-  
-    // **Star Tunnel Animation Background**
-    const renderStars = () => {
-      const stars = [];
-      for (let i = 0; i < 100; i++) {
-        const top = Math.random() * 100;
-        const left = Math.random() * 100;
-        const animationDelay = Math.random() * 20;
-        const size = Math.random() * 2 + 1;
-        const duration = Math.random() * 15 + 15;
-        stars.push(
-          <div
-            key={i}
-            className="stars"
-            style={{
-              top: `${top}%`,
-              left: `${left}%`,
-              width: `${size}px`,
-              height: `${size}px`,
-              animationDelay: `${animationDelay}s`,
-              animationDuration: `${duration}s`,
-            }}
-          ></div>
-        );
-      }
-      return stars;
-    };
-  
-    return (
-      <>
-        <AuthenticatedTemplate>
-            <>
-            Authenticated
-            </>
-          {/* <motion.button
+
+export function AuthHome() {
+  const { instance, accounts } = useMsal();
+  const isAdmin = accounts[0] && adminList.includes(accounts[0]?.username);
+  const [loaded, setLoaded] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
+  // **Preload the Image Before Rendering**
+  useEffect(() => {
+    const img = new Image();
+    img.src = image;
+    img.onload = () => setLoaded(true);
+  }, []);
+
+  const handleLogin = (loginType: string) => {
+    if (loginType === "popup") {
+      instance.loginPopup({
+        ...loginRequest,
+        redirectUri: redirectUri,
+      });
+    } else if (loginType === "redirect") {
+      instance.loginRedirect(loginRequest);
+    }
+  };
+
+  // **Star Tunnel Animation Background**
+  const renderStars = () => {
+    const stars = [];
+    for (let i = 0; i < 100; i++) {
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const animationDelay = Math.random() * 20;
+      const size = Math.random() * 2 + 1;
+      const duration = Math.random() * 15 + 15;
+      stars.push(
+        <div
+          key={i}
+          className="stars"
+          style={{
+            top: `${top}%`,
+            left: `${left}%`,
+            width: `${size}px`,
+            height: `${size}px`,
+            animationDelay: `${animationDelay}s`,
+            animationDuration: `${duration}s`,
+          }}
+        ></div>
+      );
+    }
+    return stars;
+  };
+
+  return (
+    <>
+      <AuthenticatedTemplate>
+        <>Authenticated</>
+        {/* <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
@@ -180,22 +178,22 @@ const redirectUri: string = import.meta.env.VITE_AZURE_AD_CLIENT_ID!;
               Sign In {clicked && <Spin />}
             </motion.button>
             </motion.div> */}
-            <button
-            //   transition={{ duration: 0.2 }}
-            //   whileHover={{ scale: 1.1 }}
-            //   whileTap={{ scale: 0.9 }}
-              disabled={clicked}
-              onClick={(e) => {
-                e.preventDefault();
-                setClicked(true);
-                handleLogin("redirect");
-              }}
-              className="bg-blue-200 bg-opacity-30 border-1 text-white px-4 py-2 rounded-xl font-semibold w-full mt-8 text-center"
-            >
-              Sign In 
-            </button>
-        </UnauthenticatedTemplate>
-      </>
-    );
-  }
-  
+        <button
+          //   transition={{ duration: 0.2 }}
+          //   whileHover={{ scale: 1.1 }}
+          //   whileTap={{ scale: 0.9 }}
+          // disabled={clicked}
+          // onClick={(e) => {
+          //   e.preventDefault();
+          //   console.log("Clicked", clicked);
+          //   setClicked(true);
+          //   handleLogin("redirect");
+          // }}
+          className="bg-blue-200 bg-opacity-80 cursor-pointer border-1 text-white px-4 py-2 rounded-xl font-semibold w-full mt-8 text-center z-30"
+        >
+          Sign In
+        </button>
+      </UnauthenticatedTemplate>
+    </>
+  );
+}

@@ -10,7 +10,7 @@ import {
   TableIcon,
   GroupIcon,
   BoxIconLine,
-  TaskIcon
+  TaskIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 
@@ -33,7 +33,7 @@ const navItems: NavItem[] = [
   {
     name: "Session Details",
     icon: <TaskIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
+    subItems: [{ name: "User Streams", path: "/stream-records", pro: false }],
   },
   {
     name: "Pages",
