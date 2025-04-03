@@ -179,16 +179,16 @@ export function AuthHome() {
             </motion.button>
             </motion.div> */}
         <button
-          //   transition={{ duration: 0.2 }}
-          //   whileHover={{ scale: 1.1 }}
-          //   whileTap={{ scale: 0.9 }}
+          // transition={{ duration: 0.2 }}
+          // whileHover={{ scale: 1.1 }}
+          // whileTap={{ scale: 0.9 }}
           // disabled={clicked}
-          // onClick={(e) => {
-          //   e.preventDefault();
-          //   console.log("Clicked", clicked);
-          //   setClicked(true);
-          //   handleLogin("redirect");
-          // }}
+          onClick={(e) => {
+            e.preventDefault();
+            console.log("Clicked", clicked);
+            setClicked(true);
+            handleLogin("redirect");
+          }}
           className="bg-blue-200 bg-opacity-80 cursor-pointer border-1 text-white px-4 py-2 rounded-xl font-semibold w-full mt-8 text-center z-30"
         >
           Sign In
