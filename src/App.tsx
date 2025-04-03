@@ -23,6 +23,7 @@ import { PublicClientApplication } from "@azure/msal-browser";
 import { CustomNavigationClient } from "./utils/NacigationClient";
 import { AuthHome } from "./pages/Dashboard/AuthHome";
 import UserSessionTable from "./pages/Tables/UserSessionTable";
+import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 
 interface AppProps {
   pca: PublicClientApplication;
@@ -36,41 +37,43 @@ export default function App({ pca }: AppProps) {
     <MsalProvider instance={pca}>
       <ScrollToTop />
       <Routes>
-        {/* Dashboard Layout */}
-        <Route element={<AppLayout />}>
-          <Route index path="/" element={<AuthHome />} />
-
-          {/* Others Page */}
-          <Route path="/profile" element={<UserProfiles />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/blank" element={<Blank />} />
-
-          {/* Forms */}
-          <Route path="/form-elements" element={<FormElements />} />
-
-          {/* Tables */}
-          <Route path="/stream-records" element={<UserStreamTable />} />
-          <Route
-            path="/session-records/:email"
-            element={<UserSessionTable />}
-          />
-
-          {/* Ui Elements */}
-          <Route path="/alerts" element={<Alerts />} />
-          <Route path="/avatars" element={<Avatars />} />
-          <Route path="/badge" element={<Badges />} />
-          <Route path="/buttons" element={<Buttons />} />
-          <Route path="/images" element={<Images />} />
-          <Route path="/videos" element={<Videos />} />
-
-          {/* Charts */}
-          <Route path="/line-chart" element={<LineChart />} />
-          <Route path="/bar-chart" element={<BarChart />} />
-        </Route>
-
-        {/* Auth Layout */}
+        {/* Authentication Routes */}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+
+        {/* Dashboard Layout */}
+        <Route element={<ProtectedRoute />}>
+          <Route element={<AppLayout />}>
+            <Route index path="/" element={<AuthHome />} />
+
+            {/* Others Page */}
+            <Route path="/profile" element={<UserProfiles />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/blank" element={<Blank />} />
+
+            {/* Forms */}
+            <Route path="/form-elements" element={<FormElements />} />
+
+            {/* Tables */}
+            <Route path="/stream-records" element={<UserStreamTable />} />
+            <Route
+              path="/session-records/:email"
+              element={<UserSessionTable />}
+            />
+
+            {/* Ui Elements */}
+            <Route path="/alerts" element={<Alerts />} />
+            <Route path="/avatars" element={<Avatars />} />
+            <Route path="/badge" element={<Badges />} />
+            <Route path="/buttons" element={<Buttons />} />
+            <Route path="/images" element={<Images />} />
+            <Route path="/videos" element={<Videos />} />
+
+            {/* Charts */}
+            <Route path="/line-chart" element={<LineChart />} />
+            <Route path="/bar-chart" element={<BarChart />} />
+          </Route>
+        </Route>
 
         {/* Fallback Route */}
         <Route path="*" element={<NotFound />} />
