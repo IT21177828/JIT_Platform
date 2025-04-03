@@ -1,14 +1,46 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Checkbox from "../form/input/Checkbox";
 import Button from "../ui/button/Button";
+import { useMsal } from "@azure/msal-react";
+import adminList from "../../adminList";
+import { loginRequest } from "../../authConfig";
+
+const redirectUri: string = import.meta.env.VITE_AZURE_AD_CLIENT_ID || "http://localhost:3000";
 
 export default function SignInForm() {
+  const { instance, accounts } = useMsal();
+  const isAdmin = accounts[0] && adminList.includes(accounts[0]?.username);
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    if (accounts.length > 0) {
+      const username = accounts[0]?.username;
+      if (adminList.includes(username)) {
+        navigate("/");
+      } else {
+        console.warn("Not an admin user");
+      }
+    }
+  }, [accounts, navigate]);
+
+  const handleLogin = (loginType: string) => {
+    if (loginType === "popup") {
+      instance.loginPopup({
+        ...loginRequest,
+        redirectUri: redirectUri,
+      });
+    } else if (loginType === "redirect") {
+      instance.loginRedirect(loginRequest);
+    }
+  };
+
   return (
     <div className="flex flex-col flex-1">
       <div className="w-full max-w-md pt-10 mx-auto">
@@ -127,7 +159,16 @@ export default function SignInForm() {
                   </Link>
                 </div>
                 <div>
-                  <Button className="w-full" size="sm">
+                  <Button
+                    className="w-full"
+                    size="sm"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // console.log("Clicked", clicked);
+                      // setClicked(true);
+                      handleLogin("redirect");
+                    }}
+                  >
                     Sign in
                   </Button>
                 </div>
