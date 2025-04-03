@@ -86,37 +86,37 @@ export function AuthHome() {
               <span className="font-bold mt-2 text-white">My Stream</span>
             </RouterLink>
           </motion.button> */}
-
-        {isAdmin && (
-          // <motion.button
-          //   initial={{ opacity: 0, y: 20 }}
-          //   animate={{ opacity: 1, y: 0 }}
-          //   transition={{ duration: 0.2 }}
-          //   whileHover={{ scale: 1.02 }}
-          //   whileTap={{ scale: 0.98 }}
-          //   className="absolute top-0 left-40 m-20"
-          // >
-          //   <RouterLink
-          //     to="/dashboard"
-          //     className="px-8 py-6 bg-white bg-opacity-10 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden items-center flex flex-col"
-          //   >
-          //     <img src={admin} alt="Admin Dashboard" width={40} height={40} />
-          //     <span className="font-bold mt-2 text-white">Admin Dashboard</span>
-          //   </RouterLink>
-          // </motion.button>
-          <> Admin</>
-        )}
-      </AuthenticatedTemplate>
-
-      <UnauthenticatedTemplate>
-        {/* Star Tunnel Animation Background */}
-        <div className="starry-tunnelb">{renderStars()}</div>
-
-        {/* Centered Unicorns Facing Each Other */}
-        <div className="unicorn-container">
-          {/* Left Unicorn */}
-          <div className="image w-[500px] h-[500px] opacity-75">
-            {/* <motion.img
+  
+          {isAdmin && (
+            // <motion.button
+            //   initial={{ opacity: 0, y: 20 }}
+            //   animate={{ opacity: 1, y: 0 }}
+            //   transition={{ duration: 0.2 }}
+            //   whileHover={{ scale: 1.02 }}
+            //   whileTap={{ scale: 0.98 }}
+            //   className="absolute top-0 left-40 m-20"
+            // >
+            //   <RouterLink
+            //     to="/dashboard"
+            //     className="px-8 py-6 bg-white bg-opacity-10 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden items-center flex flex-col"
+            //   >
+            //     <img src={admin} alt="Admin Dashboard" width={40} height={40} />
+            //     <span className="font-bold mt-2 text-white">Admin Dashboard</span>
+            //   </RouterLink>
+            // </motion.button>
+            <> Admin</>
+          )}
+        </AuthenticatedTemplate>
+  
+        <UnauthenticatedTemplate>
+          {/* Star Tunnel Animation Background */}
+          <div className="starry-tunnelb">{renderStars()}</div>
+  
+          {/* Centered Unicorns Facing Each Other */}
+          <div className="unicorn-container">
+            {/* Left Unicorn */}
+            {/* <div className="image w-[500px] h-[500px] opacity-75"> */}
+              {/* <motion.img
                 src={image}
                 alt="Unicorn Right"
                 loading="lazy"
@@ -129,11 +129,11 @@ export function AuthHome() {
                 transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 className="unicorn transition-transform duration-500 ease-out"
               /> */}
-          </div>
-
-          {/* Right Unicorn (Flipped) */}
-          <div className="image w-[500px] h-[500px] scale-x-[-1] opacity-75">
-            {/* <motion.img
+            {/* </div> */}
+  
+            {/* Right Unicorn (Flipped) */}
+            {/* <div className="image w-[500px] h-[500px] scale-x-[-1] opacity-75"> */}
+              {/* <motion.img
                 src={image}
                 alt="Unicorn Right"
                 loading="lazy"
@@ -146,11 +146,11 @@ export function AuthHome() {
                 transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 className="unicorn transition-transform duration-500 ease-out"
               /> */}
+            {/* </div> */}
           </div>
-        </div>
-
-        {/* Login Card */}
-        {/* <motion.div
+  
+          {/* Login Card */}
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
