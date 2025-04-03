@@ -56,7 +56,7 @@ export default function UserDropdown() {
 
       const userProfile = await profileResponse.json();
       setName(userProfile.displayName);
-      setEmail(userProfile.mail || userProfile.userPrincipalName);
+      setEmail(userProfile.mail);
 
       // Fetch user profile picture
       const photoResponse = await fetch(
