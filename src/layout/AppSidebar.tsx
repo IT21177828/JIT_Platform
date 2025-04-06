@@ -7,9 +7,6 @@ import {
   GridIcon,
   HorizontaLDots,
   PageIcon,
-  TableIcon,
-  GroupIcon,
-  BoxIconLine,
   TaskIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
@@ -27,7 +24,7 @@ const navItems: NavItem[] = [
     name: "Dashboard",
     subItems: [
       { name: "Analytics", path: "/analytics", pro: false },
-      { name: "Users", path: "/", pro: false },
+      { name: "Users", path: "/users", pro: false },
     ],
   },
   {

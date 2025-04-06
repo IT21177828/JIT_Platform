@@ -11,7 +11,7 @@ export default function UserDropdown() {
   const [name, setName] = useState<string | null | undefined>(null);
   const [email, setEmail] = useState<string | null | undefined>(null);
   const [profilePic, setProfilePic] = useState<string | null | undefined>(null);
-  const { user } = useAuth();
+  const { user, isAdmin } = useAuth();
 
   function toggleDropdown() {
     setIsOpen(!isOpen);
@@ -173,16 +173,18 @@ export default function UserDropdown() {
         </div>
 
         <ul className="flex flex-col gap-1 pt-4 pb-3 border-b border-gray-200 dark:border-gray-800">
-          <li>
-            <DropdownItem
-              onItemClick={closeDropdown}
-              tag="a"
-              to="/settings"
-              className="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 dark:text-gray-400"
-            >
-              ⚙️ Account Settings
-            </DropdownItem>
-          </li>
+          {isAdmin && (
+            <li>
+              <DropdownItem
+                onItemClick={closeDropdown}
+                tag="a"
+                to="/analytics"
+                className="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 dark:text-gray-400"
+              >
+                👨🏻‍✈️ Admin Dashboard
+              </DropdownItem>
+            </li>
+          )}
         </ul>
 
         <div

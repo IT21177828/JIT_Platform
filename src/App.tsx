@@ -19,11 +19,16 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { CustomNavigationClient } from "./utils/NacigationClient";
-import { AuthHome } from "./pages/Dashboard/AuthHome";
+import { AdminHome } from "./pages/Dashboard/AdminHome";
 import UserTable from "./pages/Tables/UserTable";
 import UserSessionTable from "./pages/Tables/UserSessionTable";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import SessionRecords from "./pages/SessionRecords/SessionRecords";
+import OnboardingLayout from "./layout/OnboardingLayout";
+import OnboardingDashboard from "./pages/Onboarding/OnboardingDashboard";
+import OnboardingMySessions from "./pages/Onboarding/OnboardingMySessions";
+import OnboardingHelp from "./pages/Onboarding/OnboardingHelp";
+import AdminRoute from "./pages/ProtectedRoute/AdminRoute";
 
 interface AppProps {
   pca: PublicClientApplication;
@@ -40,43 +45,51 @@ export default function App({ pca }: AppProps) {
         <Route path="/signin" element={<SignIn />} />
 
         <Route element={<ProtectedRoute />}>
-          <Route element={<AppLayout />}>
-            <Route index path="/" element={<AuthHome />} />
-            <Route index path="/analytics" element={<AuthHome />} />
+          <Route element={<OnboardingLayout />}>
+            <Route path="/" element={<OnboardingDashboard />} />
+            <Route path="/my-session" element={<OnboardingMySessions />} />
+            <Route path="/session-help" element={<OnboardingHelp />} />
+          </Route>
 
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/blank" element={<Blank />} />
+          <Route element={<AdminRoute />}>
+            <Route element={<AppLayout />}>
+              <Route path="/users" element={<Home />} />
+              <Route path="/analytics" element={<AdminHome />} />
 
-            <Route path="/form-elements" element={<FormElements />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/blank" element={<Blank />} />
 
-            <Route path="/stream-records" element={<UserStreamTable />} />
-            <Route
-              path="/session-records/:email"
-              element={<UserSessionTable />}
-            />
-            <Route path="/stream-records" element={<UserTable />} />
-            <Route
-              path="/stream-records/:email"
-              element={<UserStreamTable />}
-            />
-            <Route
-              path="/stream-records/:email/:recordID"
-              element={<UserSessionTable />}
-            />
-            <Route
-              path="/stream-records/:email/:recordID/:sessionID"
-              element={<SessionRecords />}
-            />
+              <Route path="/form-elements" element={<FormElements />} />
 
-            <Route path="/alerts" element={<Alerts />} />
-            <Route path="/avatars" element={<Avatars />} />
-            <Route path="/badge" element={<Badges />} />
-            <Route path="/buttons" element={<Buttons />} />
-            <Route path="/images" element={<Images />} />
-            <Route path="/videos" element={<Videos />} />
+              <Route path="/stream-tables" element={<UserStreamTable />} />
+              <Route
+                path="/session-records/:email"
+                element={<UserSessionTable />}
+              />
+              <Route path="/stream-records" element={<UserTable />} />
+              <Route
+                path="/stream-records/:email"
+                element={<UserStreamTable />}
+              />
+              <Route
+                path="/stream-records/:email/:recordID"
+                element={<UserSessionTable />}
+              />
+              <Route
+                path="/stream-records/:email/:recordID/:sessionID"
+                element={<SessionRecords />}
+              />
 
-            <Route path="/line-chart" element={<LineChart />} />
-            <Route path="/bar-chart" element={<BarChart />} />
+              <Route path="/alerts" element={<Alerts />} />
+              <Route path="/avatars" element={<Avatars />} />
+              <Route path="/badge" element={<Badges />} />
+              <Route path="/buttons" element={<Buttons />} />
+              <Route path="/images" element={<Images />} />
+              <Route path="/videos" element={<Videos />} />
+
+              <Route path="/line-chart" element={<LineChart />} />
+              <Route path="/bar-chart" element={<BarChart />} />
+            </Route>
           </Route>
         </Route>
 
