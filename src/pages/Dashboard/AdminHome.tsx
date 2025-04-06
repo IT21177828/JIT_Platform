@@ -7,6 +7,10 @@ import {
 import adminList from "../../adminList";
 import image from "../../assets/images/LST.png";
 import { useEffect } from "react";
+import StatisticsChart from "../../components/statistics/StatisticsChart";
+import EcommerceMetrics from "../../components/statistics/EcommerceMetrics";
+import BarChartOne from "../../components/charts/bar/BarChartOne";
+import LineChartOne from "../../components/charts/line/LineChartOne";
 
 export function AdminHome() {
   const { instance, accounts } = useMsal();
@@ -25,9 +29,13 @@ export function AdminHome() {
   return (
     <>
       <AuthenticatedTemplate>
-        <>Authenticated</>
-
-        {isAdmin && <> Admin</>}
+        <div>
+          <EcommerceMetrics />
+        </div>
+        <div>
+          <StatisticsChart />
+        </div>
+        <LineChartOne />
       </AuthenticatedTemplate>
 
       <UnauthenticatedTemplate></UnauthenticatedTemplate>

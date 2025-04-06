@@ -13,7 +13,7 @@ const AdminRoute = () => {
 
   if (isLoading) return <Loading />;
   if (!isAuthenticated) return <Navigate to="/signin" replace />;
-  if (!isAdmin) return <Navigate to="/unauthorized" replace />;
+  if (!isAdmin) return <Navigate to="/" replace />;
 
   return <Outlet />;
 };
