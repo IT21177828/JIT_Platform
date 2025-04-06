@@ -6,7 +6,6 @@ import adminList from "../../adminList";
 import { loginRequest } from "../../authConfig";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router";
-import { useProfilePicture } from "../../hooks/useProfilePicture";
 
 const redirectUri: string =
   import.meta.env.VITE_AZURE_AD_CLIENT_ID || "http://localhost:3000";
@@ -16,9 +15,6 @@ export default function SignInForm() {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setLoading] = useState(false);
-  const photoUrl = useProfilePicture();
-
-  console.log("PhotoCCCC",photoUrl)
 
   const from = location.state?.from?.pathname || "/";
 
@@ -106,18 +102,6 @@ export default function SignInForm() {
                   )}
                 </Button>
               </motion.div>
-
-              <div className="flex items-center gap-2">
-                {photoUrl ? (
-                  <img
-                    src={photoUrl}
-                    className="rounded-full w-10 h-10"
-                    alt="User"
-                  />
-                ) : (
-                  <div className="w-10 h-10 rounded-full bg-gray-400 animate-pulse" />
-                )}
-              </div>
             </div>
           </div>
         </div>
