@@ -1,9 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router";
 import { MsalProvider } from "@azure/msal-react";
 import SignIn from "./pages/AuthPages/SignIn";
-import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
-import UserProfiles from "./pages/UserProfiles";
 import Videos from "./pages/UiElements/Videos";
 import Images from "./pages/UiElements/Images";
 import Alerts from "./pages/UiElements/Alerts";
@@ -21,12 +19,16 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { CustomNavigationClient } from "./utils/NacigationClient";
-import { AuthHome } from "./pages/Dashboard/AuthHome";
+import { AdminHome } from "./pages/Dashboard/AdminHome";
 import UserTable from "./pages/Tables/UserTable";
 import UserSessionTable from "./pages/Tables/UserSessionTable";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import SessionRecords from "./pages/SessionRecords/SessionRecords";
-
+import OnboardingLayout from "./layout/OnboardingLayout";
+import OnboardingDashboard from "./pages/Onboarding/OnboardingDashboard";
+import OnboardingMySessions from "./pages/Onboarding/OnboardingMySessions";
+import OnboardingHelp from "./pages/Onboarding/OnboardingHelp";
+import AdminRoute from "./pages/ProtectedRoute/AdminRoute";
 
 interface AppProps {
   pca: PublicClientApplication;
@@ -40,58 +42,57 @@ export default function App({ pca }: AppProps) {
     <MsalProvider instance={pca}>
       <ScrollToTop />
       <Routes>
-        {/* Authentication Routes */}
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
 
-        {/* Dashboard Layout */}
         <Route element={<ProtectedRoute />}>
-          <Route element={<AppLayout />}>
-            <Route index path="/" element={<AuthHome />} />
+          <Route element={<OnboardingLayout />}>
+            <Route path="/" element={<OnboardingDashboard />} />
+            <Route path="/my-session" element={<OnboardingMySessions />} />
+            <Route path="/session-help" element={<OnboardingHelp />} />
+          </Route>
 
-            {/* Others Page */}
-            <Route path="/profile" element={<UserProfiles />} />
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/blank" element={<Blank />} />
+          <Route element={<AdminRoute />}>
+            <Route element={<AppLayout />}>
+              <Route path="/users" element={<Home />} />
+              <Route path="/analytics" element={<AdminHome />} />
 
-            {/* Forms */}
-            <Route path="/form-elements" element={<FormElements />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/blank" element={<Blank />} />
 
+              <Route path="/form-elements" element={<FormElements />} />
 
-            {/* Tables */}
-            <Route path="/stream-records" element={<UserStreamTable />} />
-            <Route
-              path="/session-records/:email"
-              element={<UserSessionTable />}
-            />
-          {/* Tables */}
-          <Route path="/stream-records" element={<UserTable />} />
-          <Route path="/stream-records/:email" element={<UserStreamTable />} />
-          <Route
-            path="/stream-records/:email/:recordID"
-            element={<UserSessionTable />}
-          />
-          <Route
-            path="/stream-records/:email/:recordID/:sessionID"
-            element={<SessionRecords />}
-          />
+              <Route path="/stream-tables" element={<UserStreamTable />} />
+              <Route
+                path="/session-records/:email"
+                element={<UserSessionTable />}
+              />
+              <Route path="/stream-records" element={<UserTable />} />
+              <Route
+                path="/stream-records/:email"
+                element={<UserStreamTable />}
+              />
+              <Route
+                path="/stream-records/:email/:recordID"
+                element={<UserSessionTable />}
+              />
+              <Route
+                path="/stream-records/:email/:recordID/:sessionID"
+                element={<SessionRecords />}
+              />
 
+              <Route path="/alerts" element={<Alerts />} />
+              <Route path="/avatars" element={<Avatars />} />
+              <Route path="/badge" element={<Badges />} />
+              <Route path="/buttons" element={<Buttons />} />
+              <Route path="/images" element={<Images />} />
+              <Route path="/videos" element={<Videos />} />
 
-            {/* Ui Elements */}
-            <Route path="/alerts" element={<Alerts />} />
-            <Route path="/avatars" element={<Avatars />} />
-            <Route path="/badge" element={<Badges />} />
-            <Route path="/buttons" element={<Buttons />} />
-            <Route path="/images" element={<Images />} />
-            <Route path="/videos" element={<Videos />} />
-
-            {/* Charts */}
-            <Route path="/line-chart" element={<LineChart />} />
-            <Route path="/bar-chart" element={<BarChart />} />
+              <Route path="/line-chart" element={<LineChart />} />
+              <Route path="/bar-chart" element={<BarChart />} />
+            </Route>
           </Route>
         </Route>
 
-        {/* Fallback Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </MsalProvider>
