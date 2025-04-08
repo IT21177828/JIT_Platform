@@ -157,11 +157,11 @@ export default function UserSessionTableOne() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-col h-full overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03] shadow-sm"
+      className="flex flex-col h-full overflow-hidden rounded-xl border border-gray-200 bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-indigo-900 dark:border-white/[0.05] shadow-sm"
     >
-      <div className="flex justify-between items-center px-5 py-4 border-b border-gray-100 dark:border-white/[0.05]">
+      <div className="flex justify-between items-center px-5 py-4 border-b border-blue-100 dark:border-white/[0.05]">
         <div className="flex items-center">
-          <span className="text-gray-500 dark:text-gray-400 mr-2 text-sm font-medium">
+          <span className="text-gray-500 dark:text-gray-300 mr-2 text-sm font-medium">
             Show
           </span>
           <div className="relative">
@@ -169,7 +169,7 @@ export default function UserSessionTableOne() {
               whileTap={{ scale: 0.97 }}
               value={recordsPerPage}
               onChange={handleRecordsPerPageChange}
-              className="mx-1 appearance-none rounded-lg border border-gray-200 dark:border-white/20 dark:bg-white/5 dark:text-gray-200 px-8 py-2 pr-10 focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all text-sm bg-transparent"
+              className="mx-1 appearance-none rounded-lg border border-blue-200 dark:border-blue-800/30 dark:bg-white/5 dark:text-gray-200 px-8 py-2 pr-10 focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all text-sm bg-transparent"
             >
               <option value={5} className="dark:text-black">
                 5
@@ -185,7 +185,7 @@ export default function UserSessionTableOne() {
               </option>
             </motion.select>
           </div>
-          <span className="text-gray-500 dark:text-gray-400 mr-6 text-sm font-medium">
+          <span className="text-gray-500 dark:text-gray-300 mr-6 text-sm font-medium">
             entries
           </span>
 
@@ -201,7 +201,7 @@ export default function UserSessionTableOne() {
               }}
               transition={{ duration: 0.3 }}
               type="text"
-              className="pl-10 pr-3 py-2.5 block w-full rounded-lg border border-gray-200 dark:border-white/20 dark:bg-white/5 dark:text-gray-200 focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all sm:text-sm"
+              className="pl-10 pr-3 py-2.5 block w-full rounded-lg border border-blue-200 dark:border-blue-800/30 dark:bg-white/5 dark:text-gray-200 focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all sm:text-sm"
               placeholder="Search session ID..."
               value={searchTerm}
               onChange={(e) => {
@@ -239,7 +239,7 @@ export default function UserSessionTableOne() {
           <motion.div
             initial={{ opacity: 0.9 }}
             animate={{ opacity: 1 }}
-            className="flex rounded-lg overflow-hidden border border-gray-200 shadow-sm dark:border-white/20"
+            className="flex rounded-lg overflow-hidden border border-blue-200 shadow-sm dark:border-blue-800/30"
           >
             <motion.button
               whileHover={{
@@ -252,8 +252,8 @@ export default function UserSessionTableOne() {
               onClick={() => setStatusFilter("all")}
               className={`px-3 py-2 text-sm font-medium transition-colors ${
                 statusFilter === "all"
-                  ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white dark:from-blue-600 dark:to-blue-700"
-                  : "bg-white dark:bg-white/5 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.08]"
+                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white dark:from-blue-600 dark:to-purple-700"
+                  : "bg-white dark:bg-white/5 dark:text-gray-300 hover:bg-blue-50/50 dark:hover:bg-white/[0.08]"
               }`}
             >
               All
@@ -269,8 +269,8 @@ export default function UserSessionTableOne() {
               onClick={() => setStatusFilter("ACTIVE")}
               className={`px-3 py-2 text-sm font-medium transition-colors ${
                 statusFilter === "ACTIVE"
-                  ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white dark:from-blue-600 dark:to-blue-700"
-                  : "bg-white dark:bg-white/5 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.08]"
+                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white dark:from-blue-600 dark:to-purple-700"
+                  : "bg-white dark:bg-white/5 dark:text-gray-300 hover:bg-blue-50/50 dark:hover:bg-white/[0.08]"
               }`}
             >
               Active
@@ -286,8 +286,8 @@ export default function UserSessionTableOne() {
               onClick={() => setStatusFilter("INACTIVE")}
               className={`px-3 py-2 text-sm font-medium transition-colors ${
                 statusFilter === "INACTIVE"
-                  ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white dark:from-blue-600 dark:to-blue-700"
-                  : "bg-white dark:bg-white/5 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.08]"
+                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white dark:from-blue-600 dark:to-purple-700"
+                  : "bg-white dark:bg-white/5 dark:text-gray-300 hover:bg-blue-50/50 dark:hover:bg-white/[0.08]"
               }`}
             >
               Inactive
@@ -303,8 +303,8 @@ export default function UserSessionTableOne() {
               onClick={() => setStatusFilter("NOTSTARTED")}
               className={`px-3 py-2 text-sm font-medium transition-colors ${
                 statusFilter === "NOTSTARTED"
-                  ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white dark:from-blue-600 dark:to-blue-700"
-                  : "bg-white dark:bg-white/5 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.08]"
+                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white dark:from-blue-600 dark:to-purple-700"
+                  : "bg-white dark:bg-white/5 dark:text-gray-300 hover:bg-blue-50/50 dark:hover:bg-white/[0.08]"
               }`}
             >
               Not Started
@@ -315,7 +315,7 @@ export default function UserSessionTableOne() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={fetchData}
-            className="flex items-center gap-2 px-4 py-1 rounded-lg bg-blue-50 text-blue-600 border border-blue-100 dark:bg-blue-900/20 dark:border-blue-800/30 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-800/30 transition-all font-medium"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md hover:shadow-blue-500/30 transition-all font-medium"
             disabled={isRefreshing}
           >
             <motion.div
@@ -326,8 +326,9 @@ export default function UserSessionTableOne() {
                 ease: "linear",
               }}
             >
-              <IoRefreshCircleOutline className="h-7 w-6" />
+              <IoRefreshCircleOutline className="h-6 w-6" />
             </motion.div>
+            <span>Refresh</span>
           </motion.button>
         </div>
       </div>
@@ -338,18 +339,18 @@ export default function UserSessionTableOne() {
       >
         <div className="min-w-[1102px]">
           <Table>
-            <TableHeader className="sticky top-0 bg-white dark:bg-neutral-800/95 z-10">
-              <TableRow className="border-b border-gray-100 dark:border-white/[0.05]">
+            <TableHeader className="sticky top-0 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 z-10">
+              <TableRow className="border-b border-blue-100 dark:border-white/[0.05]">
                 <TableCell
                   isHeader
-                  className="px-5 py-4 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-300"
+                  className="px-5 py-4 font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-start text-theme-xs"
                 >
                   <motion.div
                     initial={{ opacity: 0.8 }}
                     animate={{ opacity: 1 }}
                     className="flex items-center gap-2"
                   >
-                    <div className="p-1.5 rounded-full bg-blue-50 dark:bg-blue-900/20">
+                    <div className="p-1.5 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50">
                       <IoIdCardOutline className="h-4 w-4 text-blue-600 dark:text-blue-300" />
                     </div>
                     <span className="font-semibold">Session ID</span>
@@ -357,14 +358,14 @@ export default function UserSessionTableOne() {
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-5 py-4 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-300"
+                  className="px-5 py-4 font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-start text-theme-xs"
                 >
                   <motion.div
                     initial={{ opacity: 0.8 }}
                     animate={{ opacity: 1 }}
                     className="flex items-center gap-2"
                   >
-                    <div className="p-1.5 rounded-full bg-green-50 dark:bg-green-900/20">
+                    <div className="p-1.5 rounded-full bg-gradient-to-r from-green-100 to-green-200 dark:from-green-900/50 dark:to-green-800/50">
                       <TbDeviceIpadHorizontal className="h-4 w-4 text-green-600 dark:text-green-300" />
                     </div>
                     <span className="font-semibold">Ip Address</span>
@@ -372,14 +373,14 @@ export default function UserSessionTableOne() {
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-5 py-4 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-300"
+                  className="px-5 py-4 font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-start text-theme-xs"
                 >
                   <motion.div
                     initial={{ opacity: 0.8 }}
                     animate={{ opacity: 1 }}
                     className="flex items-center gap-2"
                   >
-                    <div className="p-1.5 rounded-full bg-amber-50 dark:bg-amber-900/20">
+                    <div className="p-1.5 rounded-full bg-gradient-to-r from-amber-100 to-amber-200 dark:from-amber-900/50 dark:to-amber-800/50">
                       <IoCalendarOutline className="h-4 w-4 text-amber-600 dark:text-amber-300" />
                     </div>
                     <span className="font-semibold">Created Time</span>
@@ -387,14 +388,14 @@ export default function UserSessionTableOne() {
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-5 py-4 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-300"
+                  className="px-5 py-4 font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-start text-theme-xs"
                 >
                   <motion.div
                     initial={{ opacity: 0.8 }}
                     animate={{ opacity: 1 }}
                     className="flex items-center gap-2"
                   >
-                    <div className="p-1.5 rounded-full bg-purple-50 dark:bg-purple-900/20">
+                    <div className="p-1.5 rounded-full bg-gradient-to-r from-purple-100 to-purple-200 dark:from-purple-900/50 dark:to-purple-800/50">
                       <IoStopwatchOutline className="h-4 w-4 text-purple-600 dark:text-purple-300" />
                     </div>
                     <span className="font-semibold">Duration</span>
@@ -402,14 +403,14 @@ export default function UserSessionTableOne() {
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-5 py-4 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-300"
+                  className="px-5 py-4 font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-start text-theme-xs"
                 >
                   <motion.div
                     initial={{ opacity: 0.8 }}
                     animate={{ opacity: 1 }}
                     className="flex items-center gap-2"
                   >
-                    <div className="p-1.5 rounded-full bg-pink-50 dark:bg-pink-900/20">
+                    <div className="p-1.5 rounded-full bg-gradient-to-r from-pink-100 to-pink-200 dark:from-pink-900/50 dark:to-pink-800/50">
                       <IoTicketOutline className="h-4 w-4 text-pink-600 dark:text-pink-300" />
                     </div>
                     <span className="font-semibold">Status</span>
@@ -417,7 +418,7 @@ export default function UserSessionTableOne() {
                 </TableCell>
               </TableRow>
             </TableHeader>
-            <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
+            <TableBody className="divide-y divide-blue-100 dark:divide-white/[0.05]">
               <AnimatePresence mode="wait">
                 {loading ? (
                   <TableRow key="loading">
@@ -470,7 +471,7 @@ export default function UserSessionTableOne() {
                             opacity: [0.5, 1, 0.5],
                           }}
                           transition={{ duration: 1.5, repeat: Infinity }}
-                          className="text-base font-medium"
+                          className="text-base font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400"
                         >
                           Loading session data...
                         </motion.span>
@@ -498,7 +499,7 @@ export default function UserSessionTableOne() {
                             <motion.button
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="mt-2 text-blue-500 hover:underline"
+                              className="mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 hover:underline font-medium"
                               onClick={() => setSearchTerm("")}
                             >
                               Clear search
@@ -512,7 +513,7 @@ export default function UserSessionTableOne() {
                             <motion.button
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="mt-2 text-blue-500 hover:underline"
+                              className="mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 hover:underline font-medium"
                               onClick={() => setStatusFilter("all")}
                             >
                               Show all sessions
@@ -536,7 +537,7 @@ export default function UserSessionTableOne() {
                         delay: index * 0.05,
                         ease: "easeOut",
                       }}
-                      className="hover:bg-gray-50/70 dark:hover:bg-white/[0.03] transition-colors cursor-pointer"
+                      className="hover:bg-gradient-to-r hover:from-blue-50/70 hover:to-purple-50/70 dark:hover:bg-white/[0.03] transition-colors cursor-pointer"
                     >
                       <TableCell className="px-5 py-4 sm:px-6 text-start">
                         <motion.div
@@ -553,7 +554,11 @@ export default function UserSessionTableOne() {
                               );
                             }}
                           >
-                            <Badge size="sm" color="table">
+                            <Badge
+                              size="sm"
+                              color="table"
+                              className="bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/40"
+                            >
                               {session.sessionID}
                             </Badge>
                           </motion.div>
@@ -589,7 +594,7 @@ export default function UserSessionTableOne() {
                                   padding: "2px 4px",
                                 }}
                               >
-                                <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                                <span className="block font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-theme-sm">
                                   {ip.trim()}
                                 </span>
                                 <motion.button
@@ -611,7 +616,7 @@ export default function UserSessionTableOne() {
                               </motion.div>
                             ))
                           ) : (
-                            <span className="block font-medium text-gray-800 text-theme-sm dark:text-gray-400">
+                            <span className="block font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-theme-sm">
                               N/A
                             </span>
                           )}
@@ -619,7 +624,7 @@ export default function UserSessionTableOne() {
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         <motion.div whileHover={{ y: -1 }}>
-                          <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                          <span className="block font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-theme-sm">
                             {new Date(session.createdTime).toLocaleString(
                               "en-US",
                               {
@@ -631,7 +636,7 @@ export default function UserSessionTableOne() {
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         <motion.div whileHover={{ y: -1 }}>
-                          <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                          <span className="block font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400 text-theme-sm">
                             {calculateDuration(session)}
                           </span>
                         </motion.div>
@@ -676,27 +681,27 @@ export default function UserSessionTableOne() {
         </div>
       </div>
 
-      <div className="px-5 py-4 flex items-center justify-between border-t border-gray-100 dark:border-white/[0.05]">
+      <div className="px-5 py-4 flex items-center justify-between border-t border-blue-100 dark:border-white/[0.05]">
         <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">
           {filteredSessions.length > 0 ? (
             <>
               Showing{" "}
-              <span className="font-semibold text-gray-700 dark:text-gray-300">
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400">
                 {indexOfFirstRecord + 1}
               </span>{" "}
               to{" "}
-              <span className="font-semibold text-gray-700 dark:text-gray-300">
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400">
                 {Math.min(indexOfLastRecord, filteredSessions.length)}
               </span>{" "}
               of{" "}
-              <span className="font-semibold text-gray-700 dark:text-gray-300">
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400">
                 {filteredSessions.length}
               </span>{" "}
               entries
               {searchTerm && (
                 <>
                   (filtered from{" "}
-                  <span className="font-semibold text-gray-700 dark:text-gray-300">
+                  <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-400">
                     {userSessions.length}
                   </span>{" "}
                   total)
@@ -715,7 +720,7 @@ export default function UserSessionTableOne() {
               whileTap={{ scale: 0.95 }}
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
-              className="flex items-center gap-1 px-3.5 py-2 rounded-lg border border-gray-200 dark:border-white/20 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-white/[0.05] transition-all shadow-sm"
+              className="flex items-center gap-1 px-3.5 py-2 rounded-lg border border-blue-200 dark:border-blue-800/30 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all shadow-sm"
             >
               <IoChevronBack className="h-4 w-4 mr-1" />
               <span>Prev</span>
@@ -742,14 +747,14 @@ export default function UserSessionTableOne() {
                     onClick={() => paginate(pageNum)}
                     className={`relative min-w-[40px] h-[40px] px-3 py-2 flex items-center justify-center rounded-lg transition-all ${
                       currentPage === pageNum
-                        ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white dark:from-blue-600 dark:to-blue-700 font-medium shadow-md"
-                        : "border border-gray-200 dark:border-white/20 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.05] shadow-sm"
+                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white dark:from-blue-600 dark:to-purple-700 font-medium shadow-md"
+                        : "border border-blue-200 dark:border-blue-800/30 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 shadow-sm"
                     }`}
                   >
                     {currentPage === pageNum && (
                       <motion.div
                         layoutId="activeSessionPage"
-                        className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 shadow-md"
+                        className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-600 dark:to-purple-700 shadow-md"
                         transition={{ type: "spring", duration: 0.5 }}
                       />
                     )}
@@ -766,7 +771,7 @@ export default function UserSessionTableOne() {
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => paginate(totalPages)}
-                    className="min-w-[40px] h-[40px] px-3 py-2 flex items-center justify-center rounded-lg border border-gray-200 dark:border-white/20 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/[0.05] transition-all shadow-sm"
+                    className="min-w-[40px] h-[40px] px-3 py-2 flex items-center justify-center rounded-lg border border-blue-200 dark:border-blue-800/30 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all shadow-sm"
                   >
                     {totalPages}
                   </motion.button>
@@ -779,7 +784,7 @@ export default function UserSessionTableOne() {
               whileTap={{ scale: 0.95 }}
               onClick={() => paginate(currentPage + 1)}
               disabled={currentPage === totalPages || totalPages === 0}
-              className="flex items-center gap-1 px-3.5 py-2 rounded-lg border border-gray-200 dark:border-white/20 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-white/[0.05] transition-all shadow-sm"
+              className="flex items-center gap-1 px-3.5 py-2 rounded-lg border border-blue-200 dark:border-blue-800/30 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all shadow-sm"
             >
               <span>Next</span>
               <IoChevronForward className="h-4 w-4 ml-1" />

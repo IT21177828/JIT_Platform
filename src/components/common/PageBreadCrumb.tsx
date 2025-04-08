@@ -1,3 +1,4 @@
+import { IoStatsChart } from "react-icons/io5";
 import { Link } from "react-router";
 
 interface BreadcrumbProps {
@@ -7,12 +8,16 @@ interface BreadcrumbProps {
 const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle }) => {
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-      <h2
-        className="text-xl font-semibold text-gray-800 dark:text-white/90"
-        x-text="pageName"
-      >
-        {pageTitle}
-      </h2>
+      <div className="flex items-center gap-2">
+        <IoStatsChart className="h-5 w-5 text-blue-500" />
+        <h2
+          className="text-xl font-semibold text-gray-800 dark:text-white/90"
+          x-text="pageName"
+        >
+          {pageTitle}
+        </h2>
+      </div>
+
       <nav>
         <ol className="flex items-center gap-1.5">
           <li>
